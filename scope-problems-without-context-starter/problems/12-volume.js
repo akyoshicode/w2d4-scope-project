@@ -10,6 +10,7 @@ length and one for width). Once all three numbers (height, width, length) have
 been collected return the volume of the rectangle. Any subsequent calls to the
 function returned by recVolume should continue to return the original volume.
 
+
 Example 1:
 let table1 = recVolume(5); // returns a function
 table1(4); // returns a function
@@ -26,22 +27,40 @@ console.log(table2(75)); // STILL prints 6
 
 function recVolume(height) {
 
-  return function (length) {
-    let count = 1;
-    let previousWidth = 0
-
-    return function (width) {
-      count--;
-      if (count === 0) {
-        previousWidth = width;
-        return height * length * width;
-      } else {
-        return height * length * previousWidth;
+  let dimension = [height];
+  let measure = function (num)  {
+      if (dimension.length < 3){
+        dimension.push(num);
       }
-    }
 
+      if (dimension.length === 3){
+      return dimension.reduce((product, side) => product *= side)   //re
+    } else {
+      return measure;
+    }
   }
+  return measure;
 }
+
+
+/*
+
+function recVolume(height) {
+  let dimensions = [height];
+  const _measure = (num) => {   //self documenting conventional syntax for if changes, breaks code
+    if (dimensions.length < 3) {
+      dimensions.push(num);
+    }
+    if (dimensions.length === 3) {
+      let sum = dimensions.reduce((acc, el) => (acc *= el));
+      return sum;
+    } else {
+      return _measure;
+    }
+  };
+  return _measure;
+}
+*/
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
 
