@@ -21,9 +21,18 @@ let smoothie2 = smoothieMachine("apples", "bananas", "berries");
 console.log(smoothie2("pineapple"));
 // prints "I'm having a smoothie with apples and bananas and berries and pineapple"
 ***********************************************************************/
+/*
+function smoothieMachine(...params){
 
-// your code here
 
+  return function(...ingredients){
+
+
+    return "I'm having a smoothie with" +
+  }
+
+}
+*/
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
 try {
   module.exports = smoothieMachine;
